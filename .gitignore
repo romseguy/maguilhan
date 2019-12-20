@@ -2,12 +2,13 @@
 !wp-content/
 
 # ignore everything in the "wp-content" directory, except:
-# "mu-plugins", "plugins", "themes", "languages" directory
+# "mu-plugins", "plugins", "themes", "languages", "uploads" directory
 wp-content/*
 !wp-content/mu-plugins/
 !wp-content/plugins/
 !wp-content/themes/
 !wp-content/languages/
+!wp-content/uploads/
 
 # ignore these plugins
 wp-content/plugins/hello.php
