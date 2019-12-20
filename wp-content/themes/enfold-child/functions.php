@@ -5,11 +5,22 @@
 * Wordpress will use those functions instead of the original functions then.
 */
 
-/**
- * Automatically add product to cart on visit
- */
-add_action( 'template_redirect', 'add_product_to_cart' );
+add_action('init', 'start_session');
+
+function start_session() {
+    if( !session_id() ) {
+		session_start();
+		$_SESSION['start'] = 'true';
+    }
+}
+
+add_action( 'init', 'add_product_to_cart' );
+
 function add_product_to_cart() {
+	if (isset($_SESSION['start']) && $_SESSION['start'] == 'true') { 
+		return;
+	}
+
 	if ( ! is_admin() ) {
 		$product_id = 19; //replace with your own product id
 		$found = false;
